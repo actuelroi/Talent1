@@ -10,12 +10,10 @@ import SecondPart from "@/components/SecondPart";
 export default function Home() {
   return (
    <>
-        
      <SecondPart />
      <Pub />
      <CompagnyCard/>
      <Partenaire />
-     <Footer />
    </>
   
   

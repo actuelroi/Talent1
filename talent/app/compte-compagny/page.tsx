@@ -28,8 +28,9 @@ import { StatsGrid } from "@/components/stats-grid";
 
 export default function Page() {
   return (
-    <SidebarProvider>
-      <AppSidebar />
+     <SidebarProvider>
+
+     <AppSidebar />
       <SidebarInset className="overflow-hidden px-4 md:px-6 lg:px-8">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b">
           <div className="flex flex-1 items-center gap-2 px-3">
@@ -64,7 +65,7 @@ export default function Page() {
             <div className="space-y-1">
               <h1 className="text-2xl font-semibold">Oilà, Larry!</h1>
               <p className="text-sm text-muted-foreground">
-                Here&rsquo;s an overview of your contacts. Manage or create new
+                Here&rsquo;s an overview of your cv receive. Manage or create new
                 ones with ease!
               </p>
             </div>
