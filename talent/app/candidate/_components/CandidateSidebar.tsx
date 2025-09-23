@@ -1,17 +1,8 @@
 // src/app/candidate/components/CandidateSidebar.tsx
 'use client';
 
-import {
-  RiUserLine,
-  RiSettingsLine,
-  RiFileListLine,
-  RiBriefcaseLine,
-  RiMessageLine,
-  RiLightbulbLine,
-  RiCompassDiscoverLine,
-  RiDashboardLine,
-  RiBookOpenLine
-} from "@remixicon/react";
+import {RiUserLine,RiSettingsLine,RiFileListLine,RiBriefcaseLine,RiMessageLine,RiLightbulbLine,RiCompassDiscoverLine,
+  RiDashboardLine,RiBookOpenLine} from "@remixicon/react";
 
 interface CandidateSidebarProps {
   activeTab: string;

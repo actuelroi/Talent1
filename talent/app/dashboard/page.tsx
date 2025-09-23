@@ -3,14 +3,14 @@
 
 import { useState } from 'react';
 import Header from '@/components/Header';
-import ProfileSection from './_components/ProfileSection';
-import BenefitsSection from './_components/BenefitsSection';
-import CompanyStats from './_components/CompanyStats';
-import JobsSection from './_components/JobsSection';
-import FeaturedSection from './_components/FeaturedSection';
-import DashboardSidebar from './_components/DashboardSidebar';
-import CompanyHeader from './_components/CompanyHeader';
-import NavigationTabs from './_components/NavigationTabs';
+import ProfileSection from '../compagny-dashboard/profil/_components/ProfileSection';
+import BenefitsSection from '../compagny-dashboard/profil/_components/BenefitsSection';
+import CompanyStats from '../compagny-dashboard/profil/_components/CompanyStats';
+import JobsSection from '../compagny-dashboard/profil/_components/JobsSection';
+import FeaturedSection from '../compagny-dashboard/profil/_components/FeaturedSection';
+import DashboardSidebar from '../compagny-dashboard/profil/_components/DashboardSidebar';
+import CompanyHeader from '../compagny-dashboard/profil/_components/CompanyHeader';
+import NavigationTabs from '../compagny-dashboard/profil/_components/NavigationTabs';
 import FooterSection from '../compagny/_components/FooterSection';
 
 export default function CompanyDashboard() {
@@ -152,14 +152,12 @@ Depuis plus d'un siècle, nous exerçons ce métier unique : créateur de beaut�
           
           <div className="container max-w-7xl mx-auto px-4 py-8">
             <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
-            
             <div className="mt-8">
               {renderActiveSection()}
             </div>
           </div>
         </main>
       </div>
-      <FooterSection />
     </div>
   );
 }

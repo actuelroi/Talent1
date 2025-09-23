@@ -19,10 +19,10 @@ import { Button } from "@/components/ui/button";
 import UserDropdown from "@/components/user-dropdown";
 import FeedbackDialog from "@/components/feedback-dialog";
 import { RiScanLine, RiAddLine } from "@remixicon/react";
-import DashboardStats from "./_components/DashboardStats";
-import CVsTable from "./_components/CVsTable";
-import CandidateSearch from "./_components/CandidateSearch";
-import CompanyProfile from "./_components/CompanyProfile";
+import DashboardStats from "../compagny-dashboard/candidature/_components/DashboardStats";
+import CVsTable from "../compagny-dashboard/candidature/_components/CVsTable";
+import CandidateSearch from "../compagny-dashboard/candidature/_components/CandidateSearch";
+import CompanyProfile from "../compagny-dashboard/candidature/_components/CompanyProfile";
 import Link from "next/link";
 
 export const metadata: Metadata = {

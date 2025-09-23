@@ -7,7 +7,7 @@ import FooterSection from '../_components/FooterSection';
 import RegistrationSuccess from './_component/RegistrationSuccess';
 import RegistrationHeader from './_component/RegistrationHeader';
 import RegistrationForm from './_component/RegistrationForm';
-import FirstPage from '@/app/entreprise/_component/FirstPage';
+
 
 
 export default function CompanyRegistrationPage() {
@@ -24,7 +24,6 @@ export default function CompanyRegistrationPage() {
         <main className="flex-1">
           <RegistrationSuccess />
         </main>
-        <FooterSection />
       </div>
     );
   }
@@ -39,7 +38,6 @@ export default function CompanyRegistrationPage() {
           <RegistrationForm onComplete={handleRegistrationComplete} />
         </div>
       </main>
-      <FooterSection />
     </div>
   );
 }

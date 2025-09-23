@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import FooterSection from "./compagny/_components/FooterSection";
+import {ClerkProvider} from '@clerk/nextjs'
+import { TRPCReactProvider } from "@/trpc/client";
+import { Toaster } from "@/components/ui/sonner";
 
 
 const geistSans = Geist({
@@ -26,14 +29,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
+      <TRPCReactProvider>
+        <Toaster richColors/>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         {children}
-        <FooterSection />
+        {/* <FooterSection /> */}
       </body>
     </html>
+    </TRPCReactProvider>
+    </ClerkProvider>
   );
 }
