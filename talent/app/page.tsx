@@ -1,5 +1,6 @@
 
 import CompagnyCard from "@/components/CompagnyCard";
+import FirstPart from "@/components/FirstPart";
 import Footer from "@/components/Footer";
 
 import Partenaire from "@/components/Partenaire";
@@ -10,7 +11,8 @@ import SecondPart from "@/components/SecondPart";
 export default function Home() {
   return (
    <>
-     <SecondPart />
+     {/* <SecondPart /> */}
+     <FirstPart />
      <Pub />
      <CompagnyCard/>
      <Partenaire />

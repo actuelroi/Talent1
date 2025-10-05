@@ -1,131 +1,62 @@
+// // src/app/companies/l-oreal/jobs/[slug]/page.tsx
+
+// import Link from "next/link";
+
+// import CompanyInfo from "./_components/CompanyInfo";
+// import FAQSection from "./_components/FAQSection";
+// import JobActions from "./_components/JobActions";
+// import JobDescription from "./_components/JobDescription";
+// import JobHeader from "./_components/JobHeader";
+// import RelatedJobs from "./_components/RelatedJobs";
+// import { Button } from "@/components/ui/button";
+// import FooterSection from "@/app/compagny/_components/FooterSection";
+
+// export default function JobDetailPage() {
+//   return (
+//     <div className="min-h-screen flex flex-col">
+//       {/* <Header /> */}
+//       <main className="flex-1">
+//         <div className="container max-w-6xl mx-auto px-4 py-8">
+//           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+//             {/* Main Content */}
+//             <div className="lg:col-span-2 space-y-8">
+//               <JobHeader />
+//               <JobActions />
+//               <JobDescription />
+             
+//               <FAQSection />
+//             </div>
+
+//             {/* Sidebar */}
+//             <div className="space-y-8">
+//               <CompanyInfo />
+//               <RelatedJobs />
+//             </div>
+//           </div>
+//         </div>
+//       </main>
+//       <FooterSection />
+//     </div>
+//   );
+// }
+
+
 // src/app/jobs/[id]/page.tsx
-import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
+import { notFound } from "next/navigation";
+import { TRPCReactProvider } from "@/trpc/client";
+import JobDetailContent from "./_components/JobDetailContent";
 
-import JobHeader from './_components/JobHeader';
-import JobActions from './_components/JobActions';
-import JobDescription from './_components/JobDescription';
-import CompanyCard from './_components/CompanyCard';
-import FooterSection from '@/app/compagny/_components/FooterSection';
-import SimilarJobs from './_components/SimilarJobs';
-import { prisma } from '@/lib/db';
 
-interface JobCategory {
-  categoryId: string;
-  // add other properties if they exist
-}
-
-interface JobPageProps {
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-export default async function JobPage({ params }: JobPageProps) {
-  const job = await prisma.jobPosting.findUnique({
-    where: {
-      id: params.id,
-      isActive: true,
-    },
-    include: {
-      company: {
-        include: {
-          benefits: true,
-          commitments: true,
-        },
-      },
-      jobCategories: {
-        include: {
-          category: true,
-        },
-      },
-    },
-  });
-
-  if (!job) {
-    notFound();
-  }
-
-  // Increment view count
-  await prisma.jobView.create({
-    data: {
-      jobPostingId: job.id,
-    },
-  });
-
-  // Get similar jobs
-  const similarJobs = await prisma.jobPosting.findMany({
-    where: {
-      isActive: true,
-      id: {
-        not: job.id,
-      },
-      OR: [
-        {
-          companyId: job.companyId,
-        },
-        {
-          jobCategories: {
-            some: {
-              categoryId: {
-                in: job.jobCategories.map((jc:JobCategory) => jc.categoryId),
-              },
-            },
-          },
-        },
-      ],
-    },
-    include: {
-      company: true,
-    },
-    take: 4,
-  });
-
+export default function JobDetailPage({ params }: PageProps) {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* <Header /> */}
-      <main className="flex-1 bg-gray-50">
-        <div className="container max-w-6xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-6">
-              <JobHeader job={job} />
-              <JobActions job={job} />
-              <JobDescription job={job} />
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              <CompanyCard  company={job.company} />
-              <SimilarJobs jobs={similarJobs} />
-            </div>
-          </div>
-        </div>
-      </main>
-      <FooterSection />
-    </div>
+    <TRPCReactProvider>
+      <JobDetailContent jobId={params.id} />
+    </TRPCReactProvider>
   );
-}
-
-// Generate metadata for SEO
-export async function generateMetadata({ params }: JobPageProps) {
-  const job = await prisma.jobPosting.findUnique({
-    where: {
-      id: params.id,
-    },
-    include: {
-      company: true,
-    },
-  });
-
-  if (!job) {
-    return {
-      title: 'Job Not Found',
-    };
-  }
-
-  return {
-    title: `${job.title} at ${job.company.name} | Welcome to the Jungle`,
-    description: job.description.substring(0, 160),
-  };
 }

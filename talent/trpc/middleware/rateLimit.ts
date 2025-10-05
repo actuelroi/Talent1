@@ -52,7 +52,7 @@ const createMemoryStore = () => {
 const memoryStore = createMemoryStore();
 
 // Run cleanup every 5 minutes
-setInterval(() => memoryStore.cleanup(), 5 * 60 * 1000);
+setInterval(() => memoryStore.cleanup(), 1 * 60 * 1000);
 
 export const rateLimit = (options: RateLimitOptions) => {
   const { max, windowMs, keyGenerator = (ctx) => ctx.req?.ip || 'anonymous' } = options;

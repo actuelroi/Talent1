@@ -13,7 +13,7 @@ export default function HeroSection() {
             <p className="text-xl text-gray-600 mb-8">
               Votre solution pour améliorer votre attractivité, votre visibilité et votre impact pour recruter les bons talents.
             </p>
-            <Link href="/compagny/register">
+            <Link href="/register">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
               Ajouter votre entreprise
             </Button>

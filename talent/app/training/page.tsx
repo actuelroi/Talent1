@@ -26,6 +26,7 @@ const mockCourses = [
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     featured: true
   },
+
   {
     id: '2',
     title: 'Développement Web avec React',
@@ -38,7 +39,8 @@ const mockCourses = [
     students: 2890,
     price: 79,
     image: 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://www.youtube.com/embed/jzN-Do26Umw',
+   
     featured: true
   },
   {

@@ -8,22 +8,22 @@ import superjson from 'superjson'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export const createTRPCContext = cache(async () => {
-  if (isDevelopment) {
-    // Mock auth for development
-    return {
-      auth: {
-        userId: 'dev-user-id-123',
-        sessionId: 'dev-session-id',
-        session: null,
-        user: null,
-        orgId: null,
-        orgRole: null,
-        orgSlug: null,
-        claims: null,
-        debug: null,
-      },
-    }
-  }
+  // if (isDevelopment) {
+  //   // Mock auth for development
+  //   return {
+  //     auth: {
+  //       userId: 'dev-user-id-123',
+  //       sessionId: 'dev-session-id',
+  //       session: null,
+  //       user: null,
+  //       orgId: null,
+  //       orgRole: null,
+  //       orgSlug: null,
+  //       claims: null,
+  //       debug: null,
+  //     },
+  //   }
+  // }
 
   try {
     // Production: use real auth
